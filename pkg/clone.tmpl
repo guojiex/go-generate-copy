@@ -4,10 +4,11 @@ package {{.PackageName}}
 
 {{range .Nodes}}
 func (i *{{.StructName}}) Clone() *{{.StructName}} {
-	return &{{.StructName}}{
-        {{range .Fields}}
-            {{.FieldName}}: i.{{.FieldName}},
-        {{end}}
+	 out := &{{.StructName}}{
+        {{- range .Fields}}
+        {{.FieldName}}: i.{{.FieldName}},
+        {{- end}}
 	}
+	return out
 }
 {{end}}
